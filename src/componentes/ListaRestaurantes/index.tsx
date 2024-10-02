@@ -9,6 +9,7 @@ const ListaRestaurantes = () => {
 
   const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([])
   const [proximaPagina, setProximaPagina] = useState('')
+  const [paginaAnterior, setPaginaAnterior] = useState('')
 
   useEffect(() => {
     //obter restaurantes
@@ -16,6 +17,7 @@ const ListaRestaurantes = () => {
       .then(resposta => {
         setRestaurantes(resposta.data.results)
         setProximaPagina(resposta.data.next)
+        setPaginaAnterior(resposta.data.previous)
       })
       .catch(erro => {
         console.log(erro)
